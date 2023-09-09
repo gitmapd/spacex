@@ -14,9 +14,11 @@ def date_only_filter(s):
    
 @app.route("/")
 def index():
-    return render_template('index.html',launches=launches)
+    return render_template('index.html',launches=launches,latest=latest)
 
 launches = api_get.categorize_launches(api_get.fetch_spacex_launches())
+
+latest = api_get.fetch_latest_launch()
 
 if __name__ == '__main__':
     app.run(debug=True)

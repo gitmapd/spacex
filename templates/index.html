@@ -1,4 +1,5 @@
 {% from "launch_card.html" import render_launch %}
+{% from "launch_latest.html" import render_latest %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +25,9 @@
         <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#upcoming"> Upcoming </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#latest"> Latest </a>
+        </li>
     </ul>
     <div class="tab-content">
         <div id="successful" class="container tab-pane active">
@@ -41,7 +45,13 @@
             {{render_launch(launch)}}
             {% endfor %}
         </div>
+        <div id="latest" class="container tab-pane fade">
+            {% for launch in latest.name %}
+            {{render_latest(launch)}}
+            {% endfor %}
+        </div>
     </div>
+
 </body>
 </html>
 

@@ -19,17 +19,15 @@
         let calendar1 = document.getElementById('calendar');
         let calendar = new FullCalendar.Calendar(calendar1,{
             events: [
-            {
-                {
                     {% for date in events.date_utc %}
+                    {
+                     {% for name in events.name %}
+                     'name':'{{name}}',
+                     {% endfor %}
                     'date':'{{date|dates}}'
+                    },
                     {% endfor %}
-                },
-            'todo': "Mine",
-            "date": "2023-02-20"
-            }
-            ]
-        });
+            ]});
         calendar.render();
     </script>
 </body>

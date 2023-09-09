@@ -14,8 +14,10 @@ def categorize_launches(launches):
 
 def categorize_events(launches):
     date_utc = list(x["date_utc"] for x in launches)
+    name = list(x["name"] for x in launches)
     return {
-            "date_utc": date_utc
+            "date_utc": date_utc,
+            "name": name
     }
 def fetch_spacex_launches():
     url = "https://api.spacexdata.com/v5/launches"

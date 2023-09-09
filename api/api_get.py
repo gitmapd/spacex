@@ -11,12 +11,7 @@ def categorize_launches(launches):
         "failed": failed,
         "upcoming": upcoming
     }
-def categorize_launches_latest(launches):
-    name = launches['name']
 
-    return {
-        "name", name
-    }
 def fetch_spacex_launches():
     url = "https://api.spacexdata.com/v5/launches"
     response = requests.get(url)

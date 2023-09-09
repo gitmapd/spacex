@@ -9,18 +9,30 @@ app = Flask(__name__)
 def date_only_filter(s):
     date_object = datetime.strptime(s, "%Y-%m-%dT%H:%M:%S.%fZ")
     formatted = date_object.strftime("%m-%d-%Y")
+    formatted2= date_object.strftime("%Y-%m-%d")
     #return date_object.date()
     return formatted
-   
+
+@app.template_filter("dates")
+def date_only_filter(s):
+    date_object = datetime.strptime(s, "%Y-%m-%dT%H:%M:%S.%fZ")
+    formatted2= date_object.strftime("%Y-%m-%d")
+    return formatted2
+
+@app.route("/events")
+def cal():
+    return render_template('calendar.html',events=events) 
+
 @app.route("/")
 def index():
     return render_template('index.html',launches=launches,latest=latest)
 
-launches = api_get.categorize_launches(api_get.fetch_spacex_launches())
 
 latest = api_get.fetch_latest_launch()
-#latest = api_get.categorize_launches_latest(api_get.fetch_latest_launch())
-#print(latest)
+
+launches = api_get.categorize_launches(api_get.fetch_spacex_launches())
+
+events = api_get.categorize_events(api_get.fetch_spacex_launches())
 
     
 if __name__ == '__main__':

@@ -19,6 +19,9 @@ def index():
 launches = api_get.categorize_launches(api_get.fetch_spacex_launches())
 
 latest = api_get.fetch_latest_launch()
+#latest = api_get.categorize_launches_latest(api_get.fetch_latest_launch())
+#print(latest)
 
+    
 if __name__ == '__main__':
     app.run(debug=True)
